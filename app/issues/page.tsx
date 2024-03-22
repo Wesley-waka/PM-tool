@@ -3,7 +3,11 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      Issues Page
+      <Button>
+        <Link href='/issues/new'>
+          
+        </Link>
+      </Button>
     </div>
   )
 }
