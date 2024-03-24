@@ -4,7 +4,7 @@ import 'react-loading-skeleton.css';
 
 const LoadingIssueDetailPage = () => {
   return (
-      <Box className='max-w-xl'>
+    <Box className='max-w-xl'>
         <Skeleton/>
         <Flex className='space-x-3' my='2'>
             <Skeleton width='5rem'/>
