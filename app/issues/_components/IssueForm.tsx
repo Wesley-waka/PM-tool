@@ -12,12 +12,10 @@ import { useRouter } from 'next/router';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
 import { Issue } from '@prisma/client';
+import SimpleMDE from 'react-simplemde-editor';
 
 
 
-const SimpleMDE = dynamic(()=> import('react-simplemde-editor'),{
-  ssr: false
-})
 
 type IssueFormData = z.infer <typeof issueSchema>;
 
@@ -38,15 +36,16 @@ const IssueForm = ({issue}: { issue?: Issue}) => {
           // createIssue(data);
           await axios.post('/api/issues',data);
           router.push('/issues');
+          // router.refresh();
       } catch (error) {
         setSubmitting(false);
-          setError('An unexpected error occurred');
+        setError('An unexpected error occurred');
       } });
 
     return (
         <div className='max-w-xl'>
             {error && 
-            <Callout.Root color='red' className='mb-5/06    '>
+            <Callout.Root color='red' className='mb-5/6'>
                 <Callout.Text>{error}</Callout.Text>
             </Callout.Root>}
     <form onSubmit={onSubmit}
