@@ -3,6 +3,7 @@ import { issueSchema } from "@/app/validationSchemas";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import {patchIssueSchema} from '@/app/validationSchemas';
 
 // interface Props{
 //     params: {params: {id: string}}
@@ -17,7 +18,7 @@ export async function PATCH(
         return NextResponse.json({}, { status: 401 });
 
     const body = await request.json();
-    const validation = issueSchema.safeParse(body);
+    const validation = patchIssueSchema.safeParse(body);
     if (!validation.success)
         return NextResponse.json(validation.error.format(), { status: 400 })
 
